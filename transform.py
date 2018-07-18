@@ -138,5 +138,7 @@ def test():
     img, boxes = random_crop(img, boxes)
     print(img.size)
     draw(img, boxes)
+    img, boxes = random_flip(img, boxes)
+    draw(img, boxes)
 
-# test()
+#test()

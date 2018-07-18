@@ -14,6 +14,7 @@ from retinanet import RetinaNet
 
 print('Loading pretrained ResNet50 model..')
 d = torch.load('./model/resnet50.pth')
+print(d.keys())
 
 print('Loading into FPN50..')
 fpn = FPN50()
@@ -24,6 +25,7 @@ for k in d.keys():
 
 print('Saving RetinaNet..')
 net = RetinaNet()
+print("net.modules():", net.modules())
 for m in net.modules():
     if isinstance(m, nn.Conv2d):
         init.normal(m.weight, mean=0, std=0.01)
