@@ -123,4 +123,4 @@ def test():
     for fm in fms:
         print(fm.size())
 
-# test()
+test()

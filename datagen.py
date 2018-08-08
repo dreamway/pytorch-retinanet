@@ -133,7 +133,7 @@ def test():
         transforms.ToTensor(),
         transforms.Normalize((0.485,0.456,0.406), (0.229,0.224,0.225))
     ])
-    dataset = ListDataset(root='/mnt/hgfs/D/download/PASCAL_VOC/voc_all_images',
+    dataset = ListDataset(root='./data/voc_all_images',
                           list_file='./data/voc12_train.txt', train=True, transform=transform, input_size=600)
     dataloader = torch.utils.data.DataLoader(dataset, batch_size=8, shuffle=False, num_workers=1, collate_fn=dataset.collate_fn)
 
@@ -145,4 +145,4 @@ def test():
         torchvision.utils.save_image(grid, 'a.jpg')
         break
 
-# test()
+test()

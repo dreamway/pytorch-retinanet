@@ -25,5 +25,6 @@ Reference:
 
 
 ## Train-You-Own-Data
+20180808: train with Metro data and it seems ok. train with 1e-3
 
 

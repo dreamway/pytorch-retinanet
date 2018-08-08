@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw
 
 print('Loading model..')
 net = RetinaNet()
-net.load_state_dict(torch.load('./checkpoint/params.pth'))
+net.load_state_dict(torch.load('./checkpoint/ckpt.pth')['net'])
 net.eval()
 
 transform = transforms.Compose([
@@ -19,8 +19,8 @@ transform = transforms.Compose([
 ])
 
 print('Loading image..')
-img = Image.open('./image/000001.jpg')
-w = h = 600
+img = Image.open('./image/cctv0060.jpg')
+w = h = 416
 img = img.resize((w,h))
 
 print('Predicting..')

@@ -89,8 +89,12 @@ class FocalLoss(nn.Module):
         pos_neg = cls_targets > -1  # exclude ignored anchors
         mask = pos_neg.unsqueeze(2).expand_as(cls_preds)
         masked_cls_preds = cls_preds[mask].view(-1,self.num_classes)
-        cls_loss = self.focal_loss_alt(masked_cls_preds, cls_targets[pos_neg])
-
-        print('loc_loss: %.3f | cls_loss: %.3f' % (loc_loss.data[0]/num_pos, cls_loss.data[0]/num_pos), end=' | ')
-        loss = (loc_loss+cls_loss)/num_pos
+        cls_loss = self.focal_loss_alt(masked_cls_preds, cls_targets[pos_neg])        
+        if abs(num_pos.float())<1e-3:
+          loss = loc_loss+cls_loss
+        else:
+          print('loc_loss: %.3f | cls_loss: %.3f' % (loc_loss.item()/num_pos.item(), cls_loss.item()/num_pos.item()), end=' | ')
+          loss = (loc_loss+cls_loss)/num_pos.float()
+              
         return loss
+

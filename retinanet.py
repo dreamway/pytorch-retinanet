@@ -49,7 +49,7 @@ def test():
     print(cls_preds.size())
     loc_grads = Variable(torch.randn(loc_preds.size()))
     cls_grads = Variable(torch.randn(cls_preds.size()))
-    loc_preds.backward(loc_grads)
+    loc_preds.backward(loc_grads, retain_graph=True)
     cls_preds.backward(cls_grads)
 
-# test()
+test()

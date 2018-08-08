@@ -6,7 +6,7 @@ import math
 
 import torch
 import torch.nn as nn
-
+import pdb
 
 def get_mean_and_std(dataset, max_load=10000):
     '''Compute the mean and std value of dataset.'''
@@ -161,6 +161,7 @@ def box_nms(bboxes, scores, threshold=0.5, mode='union'):
     Reference:
       https://github.com/rbgirshick/py-faster-rcnn/blob/master/lib/nms/py_cpu_nms.py
     '''
+    print('bboxes', bboxes)
     x1 = bboxes[:,0]
     y1 = bboxes[:,1]
     x2 = bboxes[:,2]
